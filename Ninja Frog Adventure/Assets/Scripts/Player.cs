@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float vidas;
 
     bool isJumping;
+    bool doubleJumping;
 
     private GameController gc;
 
@@ -28,6 +29,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
+
+        Jump();
+    }
+
+    void Move()
+    {
         //Retorna uma direção no eixo X com valor entre -1 e 1
         float direction = Input.GetAxis("Horizontal");
 
@@ -39,7 +47,7 @@ public class Player : MonoBehaviour
             
         }
 
-        if(direction != 0 && isJumping == false)
+        if(direction != 0 && !isJumping)
         {
             anim.SetInteger("transition", 1);
         }
@@ -50,21 +58,32 @@ public class Player : MonoBehaviour
             
         }
 
-        if(direction == 0 && isJumping == false)
+        if(direction == 0 && !isJumping)
         {
             anim.SetInteger("transition", 0);
         }
-
-        Jump();
     }
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);// == Vector2(0,1)
-            anim.SetInteger("transition", 2);
-            isJumping = true;
+            if (!isJumping)
+            {
+                rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                // == Vector2(0,1)
+                anim.SetInteger("transition", 2);
+                doubleJumping = true;
+            }
+            else
+            {
+                if (doubleJumping)
+                {
+                    rig.AddForce(Vector2.up * jumpForce/2, ForceMode2D.Impulse);
+                    doubleJumping = false;
+                    anim.SetInteger("transition", 3);
+                }
+            }         
         }
     }
 
@@ -73,6 +92,14 @@ public class Player : MonoBehaviour
         if(collision.gameObject.layer == 6)
         {
             isJumping = false;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            isJumping = true;
         }
     }
 
