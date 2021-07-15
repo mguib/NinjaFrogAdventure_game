@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
             {
                 if (doubleJumping)
                 {
-                    rig.AddForce(Vector2.up * jumpForce/2, ForceMode2D.Impulse);
+                    rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                     doubleJumping = false;
                     anim.SetInteger("transition", 3);
                 }
@@ -95,6 +95,12 @@ public class Player : MonoBehaviour
         }
 
         if(collision.gameObject.tag == "Spike")
+        {
+            GameController.instance.ShowGameOver();
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Saw")
         {
             GameController.instance.ShowGameOver();
             Destroy(gameObject);
