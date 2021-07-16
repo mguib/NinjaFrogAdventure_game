@@ -60,4 +60,6 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(lvlName);
     }
+
+    
 }

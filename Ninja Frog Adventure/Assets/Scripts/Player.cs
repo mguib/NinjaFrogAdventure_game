@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
 
     void Move()
     {
+        
         //Retorna uma direção no eixo X com valor entre -1 e 1
         float direction = Input.GetAxis("Horizontal");
 
