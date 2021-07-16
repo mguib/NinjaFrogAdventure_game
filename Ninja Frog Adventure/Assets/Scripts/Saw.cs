@@ -34,6 +34,7 @@ public class Saw : MonoBehaviour
         timer += Time.deltaTime;
         if(timer >= moveTime)
         {
+            transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
             dirRight = !dirRight;
             timer = 0f;
         }

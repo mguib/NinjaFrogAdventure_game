@@ -26,22 +26,25 @@ public class Gumba : MonoBehaviour
         anim = GetComponent<Animator>();
 
         
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        rig.velocity = new Vector2(-speed, rig.velocity.y);
 
-        colliding = Physics2D.Linecast(rightCol.position, leftCol.position, layer);
+        //rig.velocity = new Vector2(-speed, rig.velocity.y);
 
-        if (colliding)
-        {
-            Debug.Log("Bateu");
-            transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
-            speed *= -1;
-        }
+        //colliding = Physics2D.Linecast(rightCol.position, leftCol.position, layer);
+        ////Debug.Log(colliding.ToString());
+
+        //if (colliding)
+        //{
+        //    Debug.Log("Bateu");
+        //    transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+        //    speed *= -1;
+        //}
     }
 
+    
 }

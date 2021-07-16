@@ -482,7 +482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230463931}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.79, y: -0.13, z: 0}
+  m_LocalPosition: {x: -0.79, y: -0.215, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 630169300}
@@ -772,15 +772,7 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 409509681}
     m_ColliderPaths:
-    - - X: 55000041
-        Y: -19999900
-      - X: 44999959
-        Y: -19999900
-      - X: 44999900
-        Y: -19999959
-      - X: 44999900
-        Y: -40000000
-      - X: -30000000
+    - - X: -30000000
         Y: -40000000
       - X: -30000000
         Y: -30000000
@@ -791,45 +783,33 @@ CompositeCollider2D:
       - X: -90000000
         Y: -40000000
       - X: -90000000
-        Y: -59999900
-      - X: -90000041
-        Y: -59999900
-      - X: -90000100
-        Y: -59999959
-      - X: -90000100
-        Y: -80000041
-      - X: -90000041
-        Y: -80000100
-      - X: 90000041
-        Y: -80000100
-      - X: 90000100
-        Y: -80000041
-      - X: 90000100
-        Y: -59999959
-      - X: 90000041
-        Y: -59999900
+        Y: -80000000
       - X: 90000000
-        Y: -59999900
+        Y: -80000000
       - X: 90000000
         Y: -40000000
-      - X: 55000100
+      - X: 55000000
         Y: -40000000
-      - X: 55000100
-        Y: -19999959
+      - X: 55000000
+        Y: -20000000
+      - X: 45000000
+        Y: -20000000
+      - X: 45000000
+        Y: -40000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 8.999974, y: -8.00001}
+    - - {x: 8.99997, y: -8}
       - {x: 8.99997, y: -4}
-      - {x: 5.50001, y: -3.9999704}
-      - {x: 5.4999747, y: -1.99999}
-      - {x: 4.49999, y: -2.0000253}
-      - {x: 4.499961, y: -4}
+      - {x: 5.5, y: -3.9999704}
+      - {x: 5.499971, y: -2}
+      - {x: 4.5, y: -2.0000293}
+      - {x: 4.4999704, y: -4}
       - {x: -3, y: -3.9999704}
       - {x: -3.0000293, y: -3}
       - {x: -4, y: -3.0000293}
       - {x: -4.0000296, y: -4}
       - {x: -9, y: -4.000029}
-      - {x: -8.999974, y: -8.00001}
+      - {x: -8.99997, y: -8}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &409509680
@@ -4310,7 +4290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.33869505, y: -0.9800005, z: -10}
+  m_LocalPosition: {x: 0.33942366, y: -0.9800005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4868,6 +4848,7 @@ GameObject:
   - component: {fileID: 630169296}
   - component: {fileID: 630169295}
   - component: {fileID: 630169301}
+  - component: {fileID: 630169302}
   m_Layer: 0
   m_Name: Gumba
   m_TagString: Untagged
@@ -4882,7 +4863,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630169294}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93d363a96d045d547b1c1714cf665f70, type: 3}
   m_Name: 
@@ -5046,6 +5027,20 @@ CircleCollider2D:
   m_Offset: {x: 0.03035295, y: -0.08872414}
   serializedVersion: 2
   m_Radius: 0.26920676
+--- !u!114 &630169302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630169294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f935a4b588e69e4da3217218de1c692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  moveTime: 3
 --- !u!1 &654041929
 GameObject:
   m_ObjectHideFlags: 0
@@ -12647,7 +12642,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289915561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.82, y: 0.35, z: 0}
+  m_LocalPosition: {x: -0.82, y: 0.316, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 630169300}
