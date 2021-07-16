@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     bool isJumping;
     bool doubleJumping;
+    bool isBlowing;
 
     private GameController gc;
 
@@ -66,7 +67,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isBlowing)
         {
             if (!isJumping)
             {
@@ -112,6 +113,23 @@ public class Player : MonoBehaviour
         if(collision.gameObject.layer == 6)
         {
             isJumping = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == 9)
+        {
+            isBlowing = true;
+            anim.SetInteger("transition", 2);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 9)
+        {
+            isBlowing = false;
         }
     }
 

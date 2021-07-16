@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5298341228386409920}
   - component: {fileID: 5298341228386409923}
   - component: {fileID: 5298341228386409922}
+  - component: {fileID: 7089760131566481442}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -118,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 5
-  jumpForce: 10
+  jumpForce: 8
   vidas: 0
 --- !u!50 &5298341228386409923
 Rigidbody2D:
@@ -154,6 +155,32 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.10911608}
+  m_Offset: {x: 0, y: -0.12403524}
   serializedVersion: 2
-  m_Radius: 0.39088392
+  m_Radius: 0.37596476
+--- !u!61 &7089760131566481442
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298341228386409950}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.009222031, y: 0.10959703}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.88079166, y: 0.32240927}
+  m_EdgeRadius: 0
