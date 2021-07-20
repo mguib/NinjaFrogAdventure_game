@@ -10,13 +10,15 @@ public class Player : MonoBehaviour
 
     public float velocity;
     public float jumpForce;
-    public float vidas;
+    public float health;
+    public Transform pointPlayer;
 
     bool isJumping;
     bool doubleJumping;
     bool isBlowing;
 
     private GameController gc;
+    private bool recovery;
 
     // Start is called before the first frame update
     void Start()
@@ -132,6 +134,24 @@ public class Player : MonoBehaviour
         {
             isBlowing = false;
         }
+    }
+
+    float recoveryCount;
+    public void OnHit()
+    {
+        recoveryCount += Time.deltaTime;
+        if (recoveryCount >= 2f)
+        {
+            health--;
+            recoveryCount = 0;
+        }
+
+        if (health <= 0 && !recovery) //Game Over
+        {
+            recovery = true;
+            //Game over aqui
+        }
+        
     }
 
 }

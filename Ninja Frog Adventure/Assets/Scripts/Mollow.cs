@@ -57,7 +57,7 @@ public class Mollow : MonoBehaviour
 
             if (height > 0 && !playerDestroyed)
             {
-                other.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 8, ForceMode2D.Impulse);
+                other.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 10, ForceMode2D.Impulse);
                 speed = 0;
                 anim.SetTrigger("hit");
                 //boxCollider2D.enabled = false;
