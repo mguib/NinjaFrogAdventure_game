@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     public float velocity;
     public float jumpForce;
     public float health;
-    public Transform pointPlayer;
 
     bool isJumping;
     bool doubleJumping;
@@ -19,6 +18,7 @@ public class Player : MonoBehaviour
 
     private GameController gc;
     private bool recovery;
+
 
     // Start is called before the first frame update
     void Start()
@@ -106,8 +106,13 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "Saw")
         {
-            GameController.instance.ShowGameOver();
+            //GameController.instance.ShowGameOver();
             Destroy(gameObject);
+        }
+
+        if(collision.gameObject.layer == 8)
+        {            
+            OnHit();
         }
     }
 
@@ -139,17 +144,16 @@ public class Player : MonoBehaviour
     float recoveryCount;
     public void OnHit()
     {
-        recoveryCount += Time.deltaTime;
-        if (recoveryCount >= 2f)
-        {
-            health--;
-            recoveryCount = 0;
-        }
+        Debug.Log("chamou");
 
-        if (health <= 0 && !recovery) //Game Over
+        Debug.Log(recoveryCount);
+
+        if (health <= 0) //Game Over
         {
+            Debug.Log("Morreu");
             recovery = true;
             //Game over aqui
+            GameController.instance.ShowGameOver();
         }
         
     }

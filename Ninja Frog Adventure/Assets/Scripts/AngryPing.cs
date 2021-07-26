@@ -147,10 +147,11 @@ public class AngryPing : MonoBehaviour
             }
             else
             {
-                playerDestroyed = true;
+                //other.gameObject.GetComponent<Player>().OnHit();
+                //playerDestroyed = true;
                 //Tira vida do player
-                GameController.instance.ShowGameOver();
-                Destroy(other.gameObject);
+                //GameController.instance.ShowGameOver();
+                //Destroy(other.gameObject);
             }
 
         }
