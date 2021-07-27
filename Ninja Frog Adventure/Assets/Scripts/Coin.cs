@@ -34,6 +34,7 @@ public class Coin : MonoBehaviour
             GameController.instance.AddCoin();
             GameController.instance.UpdateScoreText();
             GameController.instance.totalScore += score;
+
         }
     }
 }

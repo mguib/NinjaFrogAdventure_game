@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     public float velocity;
     public float jumpForce;
-    public float health;
+    
 
     bool isJumping;
     bool doubleJumping;
@@ -18,14 +18,16 @@ public class Player : MonoBehaviour
 
     private GameController gc;
     private bool recovery;
-
+    private Healt healthSystem;
+    private PlayerAudio playerAudio;
 
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
+        healthSystem = GetComponent<Healt>();
+        playerAudio = GetComponent<PlayerAudio>();
         gc = FindObjectOfType<GameController>();
     }
 
@@ -74,15 +76,18 @@ public class Player : MonoBehaviour
         {
             if (!isJumping)
             {
+                playerAudio.PlaySFX(playerAudio.jump);
                 rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 // == Vector2(0,1)
                 anim.SetInteger("transition", 2);
                 doubleJumping = true;
+
             }
             else
             {
                 if (doubleJumping)
                 {
+                    playerAudio.PlaySFX(playerAudio.jump);
                     rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                     doubleJumping = false;
                     anim.SetInteger("transition", 3);
@@ -100,17 +105,22 @@ public class Player : MonoBehaviour
 
         if(collision.gameObject.tag == "Spike")
         {
-            GameController.instance.ShowGameOver();
-            Destroy(gameObject);
+            OnHit();
         }
 
         if (collision.gameObject.tag == "Saw")
         {
             //GameController.instance.ShowGameOver();
-            Destroy(gameObject);
+            OnHit();
         }
 
-        if(collision.gameObject.layer == 8)
+        if (collision.gameObject.tag == "Enemy")
+        {
+            playerAudio.PlaySFX(playerAudio.caixa);
+            OnHit();
+        }
+
+        if (collision.gameObject.layer == 8)
         {            
             OnHit();
         }
@@ -141,16 +151,42 @@ public class Player : MonoBehaviour
         }
     }
 
-    float recoveryCount;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            playerAudio.PlaySFX(playerAudio.coinSound);
+        }
+
+        if (collision.gameObject.CompareTag("Caixa"))
+        {
+            playerAudio.PlaySFX(playerAudio.caixa);
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            playerAudio.PlaySFX(playerAudio.caixa);
+        }
+    }
+
+    //float recoveryCount;
     public void OnHit()
     {
-        Debug.Log("chamou");
+        ////recoveryCount += Time.deltaTime;
+        //if(recoveryCount >= 2f)
+        //{
+        //    anim.SetTrigger("hit");
+        //    healthSystem.health--;
 
-        Debug.Log(recoveryCount);
+        //    recoveryCount = 0f;
+        //}
 
-        if (health <= 0) //Game Over
+        anim.SetTrigger("hit");
+        healthSystem.health--;
+
+        if (healthSystem.health <= 0) //&& !recovery) //Game Over
         {
-            Debug.Log("Morreu");
+            //Debug.Log("Morreu");
             recovery = true;
             //Game over aqui
             GameController.instance.ShowGameOver();

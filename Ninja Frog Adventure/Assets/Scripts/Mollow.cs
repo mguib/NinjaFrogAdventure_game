@@ -68,9 +68,10 @@ public class Mollow : MonoBehaviour
             else
             {
                 playerDestroyed = true;
+                //other.gameObject.GetComponent<Player>().OnHit();
                 //Tira vida do player
-                GameController.instance.ShowGameOver();
-                Destroy(other.gameObject);
+                //GameController.instance.ShowGameOver();
+                //Destroy(other.gameObject);
             }
             
         }

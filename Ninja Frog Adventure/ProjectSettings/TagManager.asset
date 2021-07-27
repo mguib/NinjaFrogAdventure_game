@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Spike
   - Saw
+  - Enemy
+  - Coin
+  - Caixa
   layers:
   - Default
   - TransparentFX

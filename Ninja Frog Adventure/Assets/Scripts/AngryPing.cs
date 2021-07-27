@@ -8,6 +8,7 @@ public class AngryPing : MonoBehaviour
     private Animator anim;
     private bool isFront;
     private Vector2 direction;
+    private Player player;
 
     public bool isRight;
     public float stopDistance;
@@ -22,6 +23,7 @@ public class AngryPing : MonoBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        player = GetComponent<Player>();
 
         if (isRight)
         {
@@ -61,7 +63,7 @@ public class AngryPing : MonoBehaviour
             {
 
                 isFront = true;
-
+                
                 //Usar para atcar o play quando estiver perto
                 float distance = Vector2.Distance(transform.position, behaindHit.transform.position);
                 //Debug.Log(distance);
@@ -88,6 +90,7 @@ public class AngryPing : MonoBehaviour
 
                 isFront = true;
                 isRight = !isRight;
+                
 
                 //Usar para atcar o play quando estiver perto
                 float distance = Vector2.Distance(transform.position, hit.transform.position);
@@ -113,6 +116,7 @@ public class AngryPing : MonoBehaviour
         if (isFront)
         {
             anim.SetInteger("transition", 2);
+            
             if (!isRight)
             {
                 transform.eulerAngles = new Vector2(0, 0);
@@ -144,15 +148,11 @@ public class AngryPing : MonoBehaviour
                 //circleCollider2D.enabled = false;
                 //rig.bodyType = RigidbodyType2D.Kinematic;
                 Destroy(gameObject, 0.40f);
-            }
-            else
+            }else
             {
-                //other.gameObject.GetComponent<Player>().OnHit();
-                //playerDestroyed = true;
-                //Tira vida do player
-                //GameController.instance.ShowGameOver();
-                //Destroy(other.gameObject);
+                other.gameObject.GetComponent<Player>().OnHit();
             }
+            
 
         }
     }
